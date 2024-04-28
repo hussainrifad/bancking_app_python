@@ -22,7 +22,8 @@ while run:
             acc_type = 'ca'
         else:
             acc_type = 'sa'
-        account = Account(name, email, address, acc_type)
+        account = bank.create_account(name, email, address, acc_type)
+        print(f'account number : {account.account_number} save for future use')
         run2 = True
         while run2:
             print('1. deposit money')
@@ -61,7 +62,7 @@ while run:
             print('3. see all user account')
             print('4. total balance')
             print('5. total loan amount')
-            if(admin.view_loan_status):
+            if(bank.loan_status == True):
                 print('6. turn off loan option')
             else:
                 print('6. turn on loan option')
@@ -96,3 +97,6 @@ while run:
             print('please enter name and email correcty')
     elif(option == 4):
         run = False
+
+
+# rifadrifad@gmailcom1

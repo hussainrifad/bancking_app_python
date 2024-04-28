@@ -45,6 +45,7 @@ class Account:
             account1.balance -= amount
             account2.balance += amount
             self.transaction_history.append(transaction)
+            print(f'{amount} successfully transfered to {account2.account_holder}')
         else:
             if(bank.find_account(account2) == None):
                 print('account not exsist')
@@ -55,7 +56,7 @@ class Account:
 
     def check_transfer_history(self):
         for i in self.transaction_history:
-            print(f'{i.send_by} send {i.amount} to {i.recieved_by} in {i.time}')
+            print(f'{i.amount} send to {i.recieved_by} in {i.time}')
 
 
 class Transaction:
@@ -83,12 +84,9 @@ class Admin:
     
     def view_loan_amount(self, bank):
         bank.check_loan()
-    
-    def view_loan_status(self, bank):
-        bank.loan_status()
 
     def change_loan_status(self, bank):
-        bank.on_off_loan()
+        bank.on_off_loan(bank.loan_status)
 
     def create_admin(bank, name, email):
         bank.add_admin(name, email)

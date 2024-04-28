@@ -18,6 +18,7 @@ class Bank:
             self.__accounts.append(account)
         else:
             print('Please provide everything correctly')
+        return account
     
     def add_admin(self, name, email):
         admin = Admin(name, email)
@@ -32,7 +33,8 @@ class Bank:
     def delete_account(self, ac_number):
         account = self.find_account(ac_number)
         if(account):
-            del account
+            self.__accounts.remove(account)
+            print(f'{account.account_holder} deleted succesfully!')
         else:
             print(f'Account does not exist')
 
@@ -42,14 +44,16 @@ class Bank:
     
     def add_balance(self, amount):
         self.__balance += amount
+        print(f'{amount} added successfully!')
     
     def withdraw_balance(self, amount):
         self.__balance -= amount
+        print(f'{amount} withdraw successfully!')
     
     def get_loan(self, account, amount):
         if(amount > 0 and amount < self.__balance and self.loan_status and account.loan_limit <= 2):
             self.__balance -= amount
-            amount.balance += amount
+            account.balance += amount
             self.loan += amount
             print(f'loan {amount} is given to {account.account_holder} successfully')
         else:
@@ -59,10 +63,10 @@ class Bank:
         print(f'total loan : {self.loan}')
     
     def check_available_balance(self):
-        return self.__balance
-    
-    def loan_status(self):
-        return self.loan_status
+        if(self.__balance == True):
+            return True
+        else:
+            return False
 
     def on_off_loan(self, value):
         if(value == True):
