@@ -97,6 +97,4 @@ while run:
             print('please enter name and email correcty')
     elif(option == 4):
         run = False
-
-
-# rifadrifad@gmailcom1
+        
